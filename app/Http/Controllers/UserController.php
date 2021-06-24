@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Contact;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
 
 class UserController extends Controller
 {
@@ -79,5 +79,17 @@ class UserController extends Controller
                             'city_id' => $request->selected_city,
                         ]);
         return $user;
+    }
+
+    public function contact_us(Request $request) {
+        $contact = new Contact();
+        $contact->email = $request->email;
+        $contact->title = $request->title;
+        $contact->description = $request->description;
+        if ($contact->save()) {
+            return response()->json(['status' => true ]);
+        }else {
+            return response()->json(['status' => false ]);
+        }
     }
 }

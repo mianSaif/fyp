@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Blog;
 use App\PostObject;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\NewsFeedResource;
 
 class PostObjectController extends Controller
@@ -74,9 +75,26 @@ class PostObjectController extends Controller
         $resource = new NewsFeedResource($posts);
         return $resource;
     }
+    public function fetch_blog(Request $request) {
+
+        if ($request->post_id != 0) {
+            $posts = Blog::where('id',$request->post_id)
+                           ->paginate(1);
+        }else {
+            $posts = Blog::
+            paginate(10);
+        }
+        $resource = new NewsFeedResource($posts);
+        return $resource;
+    }
     public function recent_post(Request $request) {
         $post_type = $request->post_type;
         $posts = PostObject::where('post_type',$post_type)->orderBy('id', 'desc')->limit(5)->get();
+        return $posts;
+    }
+    public function recent_blogs(Request $request) {
+
+        $posts = Blog::orderBy('id', 'desc')->limit(5)->get();
         return $posts;
     }
     public function search_object(Request $request) {

@@ -123,10 +123,12 @@ export default {
             selected_city: '',
             title: '',
             country_options: [
-                {id:1,name: 'Pakistan'}
+                {id:1,name: 'Pakistan'},
+                {id:2,name: 'India'},
             ],
             city_options: [
-                {id:1,city_name: 'Lahore'}
+                {id:1,city_name: 'Faisalabad'},
+                {id:2,city_name: 'Lahore'},
             ],
             posts: [],
             meta : {},

@@ -55,10 +55,10 @@ class ChatController extends Controller
     }
    public function get_inbox() {
        $user_id = Auth::id();
-       $private_message = PrivateMessage::select('users.id','users.name','users.image','private_messages.message','private_messages.status')->join('users','users.id','private_messages.to_id')->where('private_messages.to_id',$user_id)
-                                         ->groupBy('private_messages.from_id')
-                                         ->orderBy('status','ASC')
-                                         ->orderBy('id','DESC')
+       $private_message = PrivateMessage::select('users.id','users.name','users.image','private_messages.message','private_messages.status')->join('users','users.id','private_messages.to_id')
+                                         ->where('private_messages.from_id',$user_id)
+                                         ->where('private_messages.to_id','!=',$user_id)
+                                         ->groupBy('private_messages.to_id')
                                          ->get();
        return response()->json($private_message);
    }

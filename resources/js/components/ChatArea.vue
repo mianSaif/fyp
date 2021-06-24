@@ -56,7 +56,7 @@
                     </div>
                     <div class="input-group write-message-div">
                         <textarea @click="emojiStatus = false" @keyup.enter="send()" v-model="message" name="" id="text_area" cols="10" rows="0"></textarea>
-                        <div class="input-group-append input-group-append-div">
+                        <div class="input-group-append input-group-append-div send-msg-plane" @click="send">
                             <span class="input-group-text input-group-text-span"><i class="fa fa-paper-plane"></i></span>
                         </div>
                     </div>
@@ -490,5 +490,9 @@ export default {
     .msg-page {
         height: 380px;
     }
+}
+
+.send-msg-plane:hover {
+    cursor: pointer;
 }
 </style>

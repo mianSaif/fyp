@@ -6,12 +6,12 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="one">
-                            <h1 class="h1-sty">Post Lost Object</h1>
+                            <h1 class="h1-sty">Post Object</h1>
                         </div>
                     </div>
                     <div class="offset-2 col-lg-8 posts-list">
                         <div class="comment-form">
-                            <form enctype="multipart/form-data" class="form-contact comment_form" @submit.prevent="postObject('edit',$session.get('post_id'))" id="commentForm">
+                            <form enctype="multipart/form-data" class="form-contact comment_form" @submit.prevent="($session.get('post_id')) ? postObject('edit',$session.get('post_id')) : postObject('post',$session.get('post_id'))" id="commentForm">
                                 <div class="row">
                                     <div class="col-md-6 mb-4">
                                         <div class="form-group">

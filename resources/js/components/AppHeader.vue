@@ -83,13 +83,13 @@
                                                     </li>
                                                 <div v-else style="display: inline-block">
                                                     <li class="z-style">
-                                                        <router-link to="/post_object">Blogs</router-link>
+                                                        <router-link to="/blogs">Blogs</router-link>
                                                     </li>
                                                     <li class="z-style">
-                                                        <router-link to="/post_object">Contact Us</router-link>
+                                                        <router-link to="/contact_us">Contact Us</router-link>
                                                     </li>
                                                     <li class="z-style">
-                                                        <router-link to="/post_object">About Us</router-link>
+                                                        <router-link to="/about_us">About Us</router-link>
                                                     </li>
                                                 </div>
                                             </ul>
@@ -163,7 +163,7 @@ export default {
                 .then((result) => {
                    if(result.status === 200) {
                        // EventBus.$emit("loadHeader",1);
-                        this.$router.push('/');
+                        window.location.href = "/";
                    }
                 })
                 .catch( (error) => {
